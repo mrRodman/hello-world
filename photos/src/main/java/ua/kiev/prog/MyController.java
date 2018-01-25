@@ -26,7 +26,7 @@ public class MyController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "view", method = RequestMethod.POST)
+	@RequestMapping(value = "/view", method = RequestMethod.POST)
 	public ModelAndView onView(@RequestParam("photo_id") long id) {
 		if (photos.containsKey(id))
 			return new ModelAndView("result", "photo_id", id);
@@ -35,7 +35,7 @@ public class MyController {
 		}
 	}
 	
-	@RequestMapping(value = "add_photo", method = RequestMethod.POST)
+	@RequestMapping(value = "/add_photo", method = RequestMethod.POST)
 	public ModelAndView onAddPhoto(@RequestParam MultipartFile photo) {
 		if (photo.isEmpty()) {
 			throw new PhotoErrorException();			
