@@ -28,8 +28,12 @@ public class MyController {
 	
 	@RequestMapping(value = "/view", method = RequestMethod.POST)
 	public ModelAndView onView(@RequestParam("photo_id") long id) {
-		if (photos.containsKey(id))
-			return new ModelAndView("result", "photo_id", id);
+		if (photos.containsKey(id)) {
+			ModelAndView model = new ModelAndView();
+			model.addObject("photo_id", id);
+			model.setViewName("result");
+			return model;
+		}
 		else {
 			throw new PhotoErrorException();
 		}
@@ -45,7 +49,10 @@ public class MyController {
 			long id = System.currentTimeMillis();
 			photos.put(id, photo.getBytes());
 			
-			return new ModelAndView("result", "photo_id", id);
+			ModelAndView model = new ModelAndView();
+			model.addObject("photo_id", id);
+			model.setViewName("result");
+			return model;
 		} catch (IOException e) {
 			throw new PhotoErrorException();
 		}
