@@ -10,7 +10,7 @@
             <input type="submit" />
         </form>
 
-        <form action="/add_photo" enctype="multipart/form-data" method="POST">
+        <form action="/photos/add_photo" enctype="multipart/form-data" method="POST">
             Photo: <input type="file" name="photo">
             <input type="submit" />
         </form>
